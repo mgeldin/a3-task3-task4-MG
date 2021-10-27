@@ -20,6 +20,7 @@ library(tidyverse)
 library(here)
 library(janitor)
 library(kableExtra)
+library(lubridate)
 ```
 
 ## Read in the data
@@ -82,8 +83,12 @@ urchins_stats
 ```{r}
 purple_urchins <- urchins_data_clean %>%
   filter(common_name == "Purple Urchin") %>%
-  
-  
+  mutate(date = mdy(date)) %>%
+  mutate(year = year(date)) %>%
+  mutate(site_full = )
+
+
+purple_urchins
   
 ```
 
