@@ -72,3 +72,18 @@ urchins_stats %>%
 urchins_stats
 ```
 
+### Description of Takeaways
+
+
+## Section 2
+
+### Data Visualization
+
+```{r}
+purple_urchins <- urchins_data_clean %>%
+  filter(common_name == "Purple Urchin") %>%
+  
+  
+  
+```
+
