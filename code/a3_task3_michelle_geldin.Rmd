@@ -19,6 +19,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 library(tidyverse)
 library(here)
 library(janitor)
+library(kableExtra)
 ```
 
 ## Read in the data
@@ -40,7 +41,7 @@ urchins_data_clean <- urchins_data %>%
 
 ```{r}
 ggplot(data = urchins_data_clean, aes(x = size)) +
-  geom_histogram(fill = "red",
+  geom_histogram(fill = "red", # How do you make one red and one purple?
                  bins = 10) +
   facet_wrap(~ common_name)
 ```
@@ -49,3 +50,25 @@ Figure caption:
 
 
 ### Descriptive Statistics Table
+
+Table Caption:
+
+```{r}
+urchins_stats <- urchins_data_clean %>%
+  group_by(common_name) %>%
+  summarize(mean_size = round(mean(size), 2),
+            sd_size = round(sd(size), 2), # How do you incorporate kableExtra?
+            median_size = round(median(size), 2),
+            sample_size = n())
+
+urchins_stats %>%
+  kable(col.names = c("Common Name",
+                      "Mean Diameter (cm)",
+                      "Standard Deviation",
+                      "Median Diameter (cm)", 
+                      "Sample Size (n)")) %>%
+  kable_styling(full_width = FALSE)
+
+urchins_stats
+```
+
