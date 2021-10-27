@@ -1,0 +1,51 @@
+---
+title: "Assignment 3 Task 3 Michelle Geldin"
+author: "Michelle Geldin"
+date: "10/27/2021"
+output:  
+  html_document: 
+    theme: yeti
+    toc: yes
+    code_folding: hide
+---
+## Overview
+
+### Data Citation
+
+## Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+library(here)
+library(janitor)
+```
+
+## Read in the data
+
+```{r}
+urchins_data <- read_csv(here("data", "urchins.csv" ))
+```
+
+## Section 1
+
+### Data Wrangling
+
+```{r}
+urchins_data_clean <- urchins_data %>%
+  clean_names()
+```
+
+### Data Visualization
+
+```{r}
+ggplot(data = urchins_data_clean, aes(x = size)) +
+  geom_histogram(fill = "red",
+                 bins = 10) +
+  facet_wrap(~ common_name)
+```
+
+Figure caption:
+
+
+### Descriptive Statistics Table
