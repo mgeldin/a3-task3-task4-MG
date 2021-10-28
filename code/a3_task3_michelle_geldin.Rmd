@@ -47,7 +47,7 @@ ggplot(data = urchins_data_clean, aes(x = size, fill = common_name)) +
   labs(x = "Urchin Diameter (cm)",
        y = "Count of Urchins",
        title = "Comparison of Urchin diameter (cm) between Purple and Red Urchins") +
-  facet_wrap(~ common_name)
+  facet_wrap(~ common_name) #How do I change the common name title?
 ```
 
 Figure caption:
@@ -98,12 +98,16 @@ purple_urchins <- urchins_data_clean %>%
 
 
 purple_urchins
-  
+
 ```
 
 ## Data Visualization
 
-```{r}
+```{r, include = FALSE}
+purple_urchins_obs <- purple_urchins %>%
+  select(site, year)
 
+purple_urchins_obs
+  
 ```
 
