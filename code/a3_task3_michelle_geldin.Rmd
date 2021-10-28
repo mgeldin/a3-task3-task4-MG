@@ -41,9 +41,12 @@ urchins_data_clean <- urchins_data %>%
 ### Data Visualization
 
 ```{r}
-ggplot(data = urchins_data_clean, aes(x = size)) +
-  geom_histogram(fill = "red", # How do you make one red and one purple?
-                 bins = 10) +
+ggplot(data = urchins_data_clean, aes(x = size, fill = common_name)) +
+  geom_histogram(bins = 10) +
+  scale_fill_manual(values = c("purple", "red")) +
+  labs(x = "Urchin Diameter (cm)",
+       y = "Count of Urchins",
+       title = "Comparison of Urchin diameter (cm) between Purple and Red Urchins") +
   facet_wrap(~ common_name)
 ```
 
@@ -58,7 +61,7 @@ Table Caption:
 urchins_stats <- urchins_data_clean %>%
   group_by(common_name) %>%
   summarize(mean_size = round(mean(size), 2),
-            sd_size = round(sd(size), 2), # How do you incorporate kableExtra?
+            sd_size = round(sd(size), 2),
             median_size = round(median(size), 2),
             sample_size = n())
 
@@ -78,17 +81,29 @@ urchins_stats
 
 ## Section 2
 
-### Data Visualization
+### Data Wrangling
 
 ```{r}
 purple_urchins <- urchins_data_clean %>%
   filter(common_name == "Purple Urchin") %>%
   mutate(date = mdy(date)) %>%
   mutate(year = year(date)) %>%
-  mutate(site_full = )
+  mutate(site_full = case_when(
+    site %in% c("NAPL") ~ "Naples Reef",
+    site %in% c("AQUE") ~ "Arroyo Quemado Reef",
+    site %in% c("CARP") ~ "Carpinteria Reef",
+    site %in% c("MOHK") ~ "Mohawk Reef",
+    site %in% c("IVEE") ~ "Isla Vista Reef"
+  ))
 
 
 purple_urchins
   
+```
+
+## Data Visualization
+
+```{r}
+
 ```
 
