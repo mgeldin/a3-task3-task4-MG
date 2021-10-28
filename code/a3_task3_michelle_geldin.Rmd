@@ -10,7 +10,13 @@ output:
 ---
 ## Overview
 
+The "urchins.csv" data comes from Santa Barbara Coastal LTER and was accessed via the EDI Data Portal. The data describes the size frequency distribution of red and purple sea urchins at SBC LTER long-term kelp removal experiment sites. The diameter of the test (shell without spines) is recorded in centimeters to the nearest 0.5 cm for 50 red and 50 purple sea urchins located in 40 m x 2 m transects in each sampling plot.
+
+This report will 
+
 ### Data Citation
+
+Reed, D. 2020. SBC LTER: Reef: Long-term experiment: Kelp removal: Urchin size frequency distribution ver 20. Environmental Data Initiative. https://doi.org/10.6073/pasta/5a1e9ef03aa47bd2225c0bb98a02a63b.
 
 ## Setup
 
