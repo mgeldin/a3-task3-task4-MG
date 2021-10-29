@@ -15,6 +15,9 @@ output:
 ## Setup
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+library(here)
+library(janitor)
 ```
 
 ## Read in the data
