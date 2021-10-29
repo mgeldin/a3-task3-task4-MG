@@ -32,7 +32,7 @@ library(lubridate)
 ## Read in the data
 
 ```{r}
-urchins_data <- read_csv(here("data", "urchins.csv" ))
+urchins_data <- read_csv(here("data", "urchins.csv"))
 ```
 
 ## Section 1
