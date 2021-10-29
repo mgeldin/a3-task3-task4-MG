@@ -9,9 +9,18 @@ output:
 ---
 ## Overview
 
+The "urchins.csv" data comes from Santa Barbara Coastal LTER and was accessed via the EDI Data Portal. The data describes the size frequency distribution of red and purple sea urchins at SBC LTER long-term kelp removal experiment sites. The diameter of the test (shell without spines) is recorded in centimeters to the nearest 0.5 cm for 50 red and 50 purple sea urchins located in 40 m x 2 m transects in each sampling plot.
+
+The data also includes experiments on two sample treatments for the two species of urchins at the testing sites for either leaving kelp intact at the site (the control) or removing kelp once per winter to help in re-colonization over the course of the year (distinguishing variable is the annual treatment).
+
+This report will compare the mean size of purple urchins in the control group and the annual group sections of Naples Reef in 2010. 
+
 ### Data Citation
 
+Reed, D. 2020. SBC LTER: Reef: Long-term experiment: Kelp removal: Urchin size frequency distribution ver 20. Environmental Data Initiative. https://doi.org/10.6073/pasta/5a1e9ef03aa47bd2225c0bb98a02a63b. 
+
 ## Setup
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 library(tidyverse)
@@ -26,7 +35,7 @@ library(lubridate)
 urchins_data <- read_csv(here("data", "urchins.csv"))
 ```
 
-## Data Wrangling
+## Data Wrangling: Clean the Data and Filter for only Purple Urchins at Naples site for 2010
 
 ```{r}
 urchins_data_cleaner <- urchins_data %>%
@@ -38,7 +47,7 @@ urchins_data_cleaner <- urchins_data %>%
   
 ```
 
-
+## Data Visualization: QQ Plot for Distribution of Purple Urchins Data
 
 ```{r}
 urchins_qq_plot <- ggplot(data = urchins_data_cleaner, aes(sample = size)) +
@@ -52,9 +61,9 @@ urchins_qq_plot
 
 Figure caption: add 1 - 2 sentences describing your main takeaways about the distribution of purple urchin sizes for each treatment (distribution, comparison, patterns, etc.). 
 
-## Summary Table
+## Summary Table: Mean, SD, and Sample Size per Treatment
 
-Table caption:
+Table caption: The following table provides a comparison of mean, standard deviation, and sample size for both treatments.
 
 ```{r}
 purple_urchins_stats <- urchins_data_cleaner %>%
