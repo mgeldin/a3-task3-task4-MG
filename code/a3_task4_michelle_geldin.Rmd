@@ -60,7 +60,7 @@ urchins_qq_plot <- ggplot(data = urchins_data_cleaner, aes(sample = size)) +
 urchins_qq_plot
 ```
 
-Figure caption: add 1 - 2 sentences describing your main takeaways about the distribution of purple urchin sizes for each treatment (distribution, comparison, patterns, etc.). 
+Figure caption: The qq plot's linear trend for both the control and annual groups mean that the distribution of sizes are normally distributed. There is a slight trend towards larger urchin sizes for the annual group judging off of the extension of the points towards the right. This insists that removing kelp once per year does have a positive impact on urchin size.
 
 ## Summary Table: Mean, SD, and Sample Size per Treatment
 

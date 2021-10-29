@@ -20,7 +20,7 @@ Reed, D. 2020. SBC LTER: Reef: Long-term experiment: Kelp removal: Urchin size f
 ## Data Setup
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, options(digits = 2))
 library(tidyverse)
 library(here)
 library(janitor)
@@ -83,6 +83,8 @@ urchins_stats
 ```
 
 Description of takeaways from Section 1:
+
+The purple urchin population has a larger count with less spread. The red urchin population are larger than the purple population by a percent different of 40%.
 
 
 ## Section 2
