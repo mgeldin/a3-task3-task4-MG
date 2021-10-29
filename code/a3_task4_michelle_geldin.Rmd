@@ -1,5 +1,5 @@
 ---
-title: "Assignment 3 Task 4 Michelle Geldin"
+title: "Assignment 3 Task 4: Purple Urchin Investigation at Naples Reef for 2010. Michelle Geldin"
 author: "Michelle Geldin"
 date: "10/29/2021"
 output:
@@ -27,6 +27,7 @@ library(tidyverse)
 library(here)
 library(janitor)
 library(lubridate)
+library(kableExtra)
 ```
 
 ## Read in the data
@@ -54,7 +55,7 @@ urchins_qq_plot <- ggplot(data = urchins_data_cleaner, aes(sample = size)) +
   geom_qq() +
   geom_qq_line() +
   facet_wrap(~ treatment) +
-  labs(x = "Purple Urchin Size", y = "Purple Urchin Count", title = "Distribution of Purple Urchins at Naples Site in 2010 Sperated per Treatment")
+  labs(x = "Theoretical", y = "Sample", title = "Distribution of Purple Urchins at Naples Site in 2010 Sperated per Treatment")
 
 urchins_qq_plot
 ```
