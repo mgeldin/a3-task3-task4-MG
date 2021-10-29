@@ -6,7 +6,6 @@ output:
   html_document: 
     theme: yeti
     toc: yes
-    code_folding: hide
 ---
 ## Overview
 
@@ -75,9 +74,10 @@ urchins_stats %>%
   kable(col.names = c("Common Name",
                       "Mean Diameter (cm)",
                       "Standard Deviation",
-                      "Median Diameter (cm)", 
+                      "Median Diameter (cm)",
                       "Sample Size (n)")) %>%
   kable_styling(full_width = FALSE)
+  
 
 urchins_stats
 ```
@@ -113,20 +113,22 @@ purple_urchins
 purple_urchins_obs <- purple_urchins %>%
   group_by(site_full, year) %>%
   summarize("count" = n()) 
-
-purple_urchins_obs
   
 ```
 
 ```{r}
 ggplot(data = purple_urchins_obs, aes(x = year, y = count, color = site_full)) +
   geom_line() +
+  scale_color_discrete(name = "Site") +
   theme(panel.background = element_rect(fill = "beige", color = "blue")) +
   theme(legend.position = "left") +
-  labs(title = "Purple Urchins Count per Site per Year") +
-  theme(plot.title = element_text(color = "purple")) +
+  labs(x = "Year", y = "Count of Urchins", title = "Purple Urchins Count per Site per Year") +
+  theme(plot.title = element_text(color = "purple3")) +
   theme(axis.text.x = element_text(angle = 65, hjust = 1)) +
   scale_x_continuous(breaks = c(2008, 2010, 2012, 2014, 2016, 2018, 2020)) +
   facet_wrap(~ site_full, scales = 'free')
 ```
 
+Figure caption:
+
+Populations declined over time. ecological stressors impacted urchin health. how consistent were observations?
