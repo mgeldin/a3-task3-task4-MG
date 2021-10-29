@@ -49,11 +49,11 @@ urchins_data_clean <- urchins_data %>%
 ```{r}
 ggplot(data = urchins_data_clean, aes(x = size, fill = common_name)) +
   geom_histogram(bins = 10) +
-  scale_fill_manual(values = c("purple", "red")) +
+  scale_fill_manual(values = c("purple", "red"), name = "Common Name") +
   labs(x = "Urchin Diameter (cm)",
        y = "Count of Urchins",
        title = "Comparison of Urchin diameter (cm) between Purple and Red Urchins") +
-  facet_wrap(~ common_name) #How do I change the common name title?
+  facet_wrap(~ common_name)
 ```
 
 Figure caption:
@@ -111,13 +111,22 @@ purple_urchins
 
 ```{r, include = FALSE}
 purple_urchins_obs <- purple_urchins %>%
-  select(site, year)
+  group_by(site_full, year) %>%
+  summarize("count" = n()) 
 
 purple_urchins_obs
   
 ```
 
 ```{r}
-ggplot(data = purple_urchins_obs, aes(x = ))
+ggplot(data = purple_urchins_obs, aes(x = year, y = count, color = site_full)) +
+  geom_line() +
+  theme(panel.background = element_rect(fill = "beige", color = "blue")) +
+  theme(legend.position = "left") +
+  labs(title = "Purple Urchins Count per Site per Year") +
+  theme(plot.title = element_text(color = "purple")) +
+  theme(axis.text.x = element_text(angle = 65, hjust = 1)) +
+  scale_x_continuous(breaks = c(2008, 2010, 2012, 2014, 2016, 2018, 2020)) +
+  facet_wrap(~ site_full, scales = 'free')
 ```
 
